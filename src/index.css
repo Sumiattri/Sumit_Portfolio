@@ -3,3 +3,43 @@
 @theme {
   --color-mint-900: oklch(0.72 0.11 178);
 }
+@font-face {
+  font-family: font1;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("assets/fonts/cartograph-extra-bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: font2;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("src/assets/fonts/wotfard-medium-webfont.woff2") format("woff2");
+}
+@font-face {
+  font-family: font3;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("src/assets/fonts/wotfard-regular-webfont.woff2") format("woff2");
+}
+@font-face {
+  font-family: font4;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("src/assets/fonts/wotfard-semibold-webfont.woff2") format("woff2");
+}
+@font-face {
+  font-family: font5;
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/font2/Wotfard_Regular/Wotfard_Regular_Webfont/Wotfard-Regular-webfont/wotfard-regular-webfont.woff2")
+    format("woff2");
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
