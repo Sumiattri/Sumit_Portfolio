@@ -1,12 +1,13 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
+import Redirect from "../components/Redirect";
 
 function Home() {
   return (
     <>
       <Navbar />
       <Hero />
-      <div className="h-screen w-full bg-[#0D0F12]"></div>
+      <Redirect />
     </>
   );
 }
