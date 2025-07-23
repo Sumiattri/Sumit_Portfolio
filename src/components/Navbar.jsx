@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { IoVolumeMediumOutline } from "react-icons/io5";
+// import { IoVolumeMediumOutline } from "react-icons/io5";
+import { BiVolumeFull } from "react-icons/bi";
 import { IoMoonOutline } from "react-icons/io5";
 import { LuSunDim } from "react-icons/lu";
-import { SlVolumeOff } from "react-icons/sl";
+// import { SlVolumeOff } from "react-icons/sl";
+import { BiVolume } from "react-icons/bi";
 import { useTheme } from "../context/ThemeContext";
 import useSound from "use-sound";
 
@@ -47,15 +49,15 @@ function Navbar() {
           </div>
           <div className="flex items-center gap-6">
             {isSoundOn ? (
-              <IoVolumeMediumOutline
+              <BiVolumeFull
                 onClick={() => {
                   toggleSound();
                   playClick4();
                 }}
-                className="dark:text-[#E4E6E8] text-black text-[23px] cursor-pointer"
+                className="dark:text-[#E4E6E8] text-black text-[23px] cursor-pointer "
               />
             ) : (
-              <SlVolumeOff
+              <BiVolume
                 onClick={() => {
                   toggleSound();
                   playClick3();
