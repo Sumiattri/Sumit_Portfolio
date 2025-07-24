@@ -42,20 +42,21 @@ function ProjectCard({
     >
       <motion.div
         style={{
-          //   position: "relative",
           backgroundColor: color,
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className="flex  flex-col relative -top-[25%] h-[500px] rounded-4xl w-[1000px] px-15  pt-10"
+        className="flex  flex-col relative -top-[25%] sm:h-[500px] h-auto sm:rounded-4xl rounded-xl sm:w-[1000px] w-[95%] sm:px-15 px-5 sm:pt-10 sm:pb-0 pb-7"
       >
-        <h2 className="text-center m-0 text-[28px]  font-[font4]">{title}</h2>
-        <div className="flex  mt-[40px] gap-[50px]  ">
-          <div className="w-[40%] relative  ">
-            <p className="text-[16px] pt-2 font-[font3] text-justify">
+        <h2 className="text-center m-0 text-[28px] sm:block hidden  font-[font4]">
+          {title}
+        </h2>
+        <div className="flex sm:flex-row flex-col-reverse  sm:mt-[40px] mt-4 sm:gap-[50px] gap-1 ">
+          <div className="sm:w-[40%] w-[100%] relative  ">
+            <p className="sm:text-[16px] text-[14px] sm:pt-2 font-[font3] text-justify">
               {description}
             </p>
-            <div className=" mt-2 flex justify-between items-center ">
+            <div className=" mt-2 flex sm:justify-between justify-center sm:gap-0 gap-3 items-center ">
               <a
                 href={live}
                 target="blank"
@@ -202,13 +203,19 @@ function ProjectCard({
               </div>
             </div>
           </div>
-
-          <div className="relative w-[60%] h-[100%] rounded-4xl overflow-hidden  ">
+          <h2 className=" text-[20px] block sm:hidden  font-[font4]">
+            {title}
+          </h2>
+          <div className="relative sm:w-[60%] w-[100%] h-[100%] sm:rounded-4xl rounded-xl overflow-hidden  ">
             <motion.div
               className="w-[100%] h-[100%] "
               style={{ scale: imageScale }}
             >
-              <img src={src} alt="image" className="object-cover rounded-4xl" />
+              <img
+                src={src}
+                alt="image"
+                className="object-cover sm:rounded-4xl rounded-xl"
+              />
             </motion.div>
           </div>
         </div>

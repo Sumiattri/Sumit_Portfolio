@@ -8,7 +8,7 @@ function Redirect() {
   const [isHovering1, setIsHovering1] = useState(false);
   const [isHovering2, setIsHovering2] = useState(false);
   const { darkMode, isSoundOn } = useTheme();
-  const [playHover, { stop }] = useSound("public/audio/rising-pops.mp3", {
+  const [playHover, { stop }] = useSound("/audio/rising-pops.mp3", {
     volume: 0.3,
     soundEnabled: isSoundOn,
   });
@@ -19,7 +19,7 @@ function Redirect() {
     <div
       className={`${
         darkMode ? "dark" : ""
-      } dark:bg-[#0D0F12] bg-white  sm:h-88 h-[calc(100vh-300px)] sm:pt-10 pt-20 text-white `}
+      } dark:bg-[#0D0F12] bg-white  sm:h-97 h-[calc(100vh-300px)] sm:pt-10 pt-20 text-white `}
     >
       <div className="max-w-[1020px] sm:px-[40px] pl-[20px] pr-[40px] mx-auto flex  flex-col gap-10 items-start ">
         <div>

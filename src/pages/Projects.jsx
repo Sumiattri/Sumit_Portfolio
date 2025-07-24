@@ -50,12 +50,13 @@ function Projects() {
 
   return (
     <div
+      styles={{}}
       ref={container}
-      className={`relative -mt-[220px] pt-[30vh] ${
+      className={`relative scrollbar-hide scroll-smooth hide-scrollbar -mt-[220px] pt-[30vh] ${
         darkMode ? "dark" : ""
       } dark:bg-[#0D0F12] bg-white `}
     >
-      <div className="text-white text-5xl sticky top-35 font-[font1] h-90 w-full flex items-center justify-center ">
+      <div className="text-white md:text-5xl sm:text-3xl text-[20px] sticky top-35 font-[font1] sm:h-90 h-40 w-full flex items-center justify-center ">
         <h1 ref={headingRef} className="dark:text-white text-black">
           {" "}
         </h1>
