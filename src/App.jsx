@@ -7,11 +7,20 @@ import {
 import { useEffect } from "react";
 
 import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import HomeLayout from "./layout/HomeLayout";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomeLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
     </>
   )
 );

@@ -5,7 +5,6 @@ import Redirect from "../components/Redirect";
 function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <Redirect />
     </>

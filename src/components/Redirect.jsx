@@ -98,6 +98,7 @@ function Redirect() {
         </div>
         <div>
           <NavLink
+            to="/projects"
             onMouseEnter={() => {
               playHover();
               setIsHovering1(true);

@@ -30,7 +30,7 @@ function Navbar() {
     <div
       className={`w-full ${
         darkMode ? "dark" : ""
-      }  h-[80px] sm:mt-[44px] mt-[0px] sticky  z-2`}
+      }  h-[80px] sm:mt-[44px] mt-[0px] sticky top-0  z-2`}
     >
       <div className=" h-full max-w-[1020px] sm:px-[40px] pl-[20px] pr-[40px] mx-auto">
         <header className="w-full h-full flex items-center justify-between">
@@ -42,9 +42,15 @@ function Navbar() {
               Sumit Attri
             </NavLink>
             <ul className="sm:flex hidden dark:text-[#E4E6E8] text-black font-[font3]  gap-8 text-[16px]">
-              <li className="cursor-pointer ">About</li>
-              <li className="cursor-pointer ">Projects</li>
-              <li className="cursor-pointer ">Contact</li>
+              <li className="cursor-pointer ">
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li className="cursor-pointer ">
+                <NavLink to="/projects">Projects</NavLink>
+              </li>
+              <li className="cursor-pointer ">
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
             </ul>
           </div>
           <div className="flex items-center gap-6">
