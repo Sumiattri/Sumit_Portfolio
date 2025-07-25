@@ -6,7 +6,7 @@ export const projects = [
     src: "/netflix1.png",
     git: "https://github.com/Sumiattri/netflix-clone",
     live: "https://netflix-clone-iota-eight-99.vercel.app/",
-    color: "#BBACAF",
+    color: "#88A28D",
   },
   {
     title: "GenAI Assistant",

@@ -1,7 +1,13 @@
-import React from "react";
+import AboutHero from "../components/AboutHero";
+import Info from "../components/Info";
 
 function About() {
-  return <div>About</div>;
+  return (
+    <>
+      <AboutHero />
+      <Info />
+    </>
+  );
 }
 
 export default About;

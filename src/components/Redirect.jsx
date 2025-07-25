@@ -24,6 +24,7 @@ function Redirect() {
       <div className="max-w-[1020px] sm:px-[40px] pl-[20px] pr-[40px] mx-auto flex  flex-col gap-10 items-start ">
         <div>
           <NavLink
+            to="/about"
             onMouseEnter={() => {
               playHover();
               setIsHovering(true);
