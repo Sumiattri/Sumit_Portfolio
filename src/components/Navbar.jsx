@@ -13,6 +13,17 @@ function Navbar() {
   const location = useLocation();
   const [isHome, setIsHome] = useState(true);
   const [isAbout, setIsAbout] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20); // Trigger blur after 20px scroll
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     setIsHome(location.pathname === "/");
   }, [location]);
@@ -41,8 +52,13 @@ function Navbar() {
   });
 
   return (
-    <div className="sticky top-0 h-[90px] z-100">
-      {" "}
+    <div
+      className={`sticky top-0 h-[80px] z-100 ${
+        scrolled
+          ? "backdrop-blur-md bg-[#0D0E11]/80 shadow-md"
+          : "bg-transparent"
+      }  `}
+    >
       <div
         className={`w-full   ${darkMode ? "dark" : ""} h-full ${
           isHome ? "sm:pt-[64px]" : "sm:pt-10px"

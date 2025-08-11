@@ -1,4 +1,3 @@
-// DistanceMap.jsx
 import { useEffect, useState } from "react";
 import {
   MapContainer,
@@ -6,6 +5,7 @@ import {
   Marker,
   Polyline,
   Popup,
+  useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -22,12 +22,27 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+// Component to fit bounds automatically
+function FitBounds({ points }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (points.length > 1) {
+      const bounds = L.latLngBounds(points);
+      map.fitBounds(bounds, { padding: [50, 50], maxZoom: 3 }); // smaller padding, limit zoom-in
+    }
+  }, [points, map]);
+
+  return null;
+}
+
 const DistanceMap = () => {
-  const [myLocation, setMyLocation] = useState(null);
+  // Fixed location: Faridabad, Haryana
+  const myLocation = { lat: 28.4089, lng: 77.3178 }; // Faridabad coordinates
   const [userLocation, setUserLocation] = useState(null);
   const [distance, setDistance] = useState(null);
 
-  // Haversine formula to calculate distance
+  // Haversine formula
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = (value) => (value * Math.PI) / 180;
     const R = 6371; // km
@@ -41,7 +56,7 @@ const DistanceMap = () => {
   };
 
   useEffect(() => {
-    // Get user's IP-based location
+    // Get visitor's location via IP
     const getUserLocation = async () => {
       try {
         const res = await axios.get("https://ipapi.co/json");
@@ -51,27 +66,11 @@ const DistanceMap = () => {
         console.error("IP location fetch failed:", err);
       }
     };
-
-    // Get my current browser location
-    const getMyLocation = () => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setMyLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
-        },
-        (err) => console.error("Location error:", err),
-        { enableHighAccuracy: true }
-      );
-    };
-
-    getMyLocation();
     getUserLocation();
   }, []);
 
   useEffect(() => {
-    if (myLocation && userLocation) {
+    if (userLocation) {
       const d = calculateDistance(
         myLocation.lat,
         myLocation.lng,
@@ -80,35 +79,52 @@ const DistanceMap = () => {
       );
       setDistance(d.toFixed(2));
     }
-  }, [myLocation, userLocation]);
+  }, [userLocation]);
 
-  if (!myLocation || !userLocation) return <p>Loading map and locations...</p>;
+  if (!userLocation)
+    return <p className="text-center ">Loading map and locations...</p>;
 
   return (
-    <div style={{ height: "500px", width: "100%", marginTop: "2rem" }}>
-      <MapContainer
-        center={myLocation}
-        zoom={5}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          attribution="&copy; OpenStreetMap"
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+    <div className="w-full h-full pb-20  rounded-md overflow-hidden">
+      <div className="h-full w-full">
+        <MapContainer
+          dragging={false}
+          zoomControl={false}
+          scrollWheelZoom={false}
+          doubleClickZoom={false}
+          touchZoom={false}
+          className="h-full w-full"
+        >
+          <TileLayer
+            attribution=""
+            url="https://basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+          />
+          <Marker position={myLocation}>
+            <Popup>My Location: Faridabad, Haryana</Popup>
+          </Marker>
+          <Marker position={userLocation}>
+            <Popup>Visitor’s Location</Popup>
+          </Marker>
+          <Polyline positions={[myLocation, userLocation]} color="blue" />
+          <FitBounds points={[myLocation, userLocation]} />
+        </MapContainer>
+      </div>
 
-        <Marker position={myLocation}>
-          <Popup>Your Location</Popup>
-        </Marker>
-
-        <Marker position={userLocation}>
-          <Popup>Visitor’s Location</Popup>
-        </Marker>
-
-        <Polyline positions={[myLocation, userLocation]} color="blue" />
-      </MapContainer>
-      <p style={{ textAlign: "center", marginTop: "1rem" }}>
-        Distance between you and visitor: <strong>{distance} km</strong>
-      </p>
+      <div className="text-center p-4 text-white font-[font3] text-[15px]">
+        <section className="">
+          I am from Haryana, India, roughly
+          <strong
+            className="text-[#FF4676] px-1 "
+            style={{ fontStyle: "italic" }}
+          >
+            {distance} km
+          </strong>
+          away
+        </section>
+        <section>
+          from your current location, according to your IP address.
+        </section>
+      </div>
     </div>
   );
 };
