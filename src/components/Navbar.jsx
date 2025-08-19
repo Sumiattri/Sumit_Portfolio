@@ -8,11 +8,13 @@ import useSound from "use-sound";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { div } from "motion/react-client";
+import { projects } from "../data";
 
 function Navbar() {
   const location = useLocation();
   const [isHome, setIsHome] = useState(true);
   const [isAbout, setIsAbout] = useState(false);
+  const [isProjects, setIsProjects] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -29,6 +31,9 @@ function Navbar() {
   }, [location]);
   useEffect(() => {
     setIsAbout(location.pathname === "/about");
+  }, [location]);
+  useEffect(() => {
+    setIsProjects(location.pathname === "/projects");
   }, [location]);
 
   const { darkMode, toggleTheme, isSoundOn, toggleSound } = useTheme();
@@ -53,15 +58,17 @@ function Navbar() {
 
   return (
     <div
-      className={`sticky top-0 h-[80px] z-100 ${
+      className={`sticky ${darkMode ? "dark" : ""}  ${
+        isHome ? "sm:-top-8 top-0" : " top-0"
+      }  sm:h-[120px] h-[90px] z-1000 ${
         scrolled
-          ? "backdrop-blur-md bg-[#0D0E11]/80 shadow-md"
+          ? "backdrop-blur-md dark:bg-[#0D0E11]/30 bg-white/30  dark:shadow-md"
           : "bg-transparent"
       }  `}
     >
       <div
         className={`w-full   ${darkMode ? "dark" : ""} h-full ${
-          isHome ? "sm:pt-[64px]" : "sm:pt-10px"
+          isHome ? "sm:pt-[54px] sm:pb-[20px] pt-0" : "sm:pt-0px"
         } mt-[0px]  transition-all duration-500 z-2`}
       >
         <div className=" h-full max-w-[1020px] sm:px-[40px] pl-[20px] pr-[40px] mx-auto">
@@ -78,7 +85,11 @@ function Navbar() {
                   <NavLink
                     // onMouseEnter={playClick5}
                     // onMouseLeave={stop4}
-                    className={` ${isAbout ? "text-white" : ""}`}
+                    className={`${
+                      (isAbout && scrolled) || isProjects || isHome
+                        ? "text-black dark:text-white"
+                        : "text-white"
+                    } `}
                     to="/about"
                   >
                     About
@@ -88,7 +99,11 @@ function Navbar() {
                   <NavLink
                     // onMouseEnter={playClick5}
                     // onMouseLeave={stop4}
-                    className={` ${isAbout ? "text-white" : ""}`}
+                    className={` ${
+                      (isAbout && scrolled) || isProjects || isHome
+                        ? "text-black dark:text-white"
+                        : "text-white "
+                    }`}
                     to="/projects"
                   >
                     Projects
@@ -98,7 +113,11 @@ function Navbar() {
                   <NavLink
                     // onMouseEnter={playClick5}
                     // onMouseLeave={stop4}
-                    className={` ${isAbout ? "text-white" : ""}`}
+                    className={`   ${
+                      (isAbout && scrolled) || isProjects || isHome
+                        ? "text-black dark:text-white"
+                        : "text-white"
+                    }`}
                     to="/contact"
                   >
                     Contact
@@ -114,7 +133,9 @@ function Navbar() {
                     playClick4();
                   }}
                   className={`dark:text-[#E4E6E8] text-black text-[23px] cursor-pointer ${
-                    isAbout ? "text-white" : ""
+                    (isAbout && scrolled) || isProjects || isHome
+                      ? "text-black dark:text-white"
+                      : "text-white"
                   }`}
                 />
               ) : (
@@ -124,14 +145,18 @@ function Navbar() {
                     playClick3();
                   }}
                   className={`dark:text-[#E4E6E8] text-black text-[23px] cursor-pointer  ${
-                    isAbout ? "text-white" : ""
+                    (isAbout && scrolled) || isProjects || isHome
+                      ? "text-black dark:text-white"
+                      : "text-white"
                   }`}
                 />
               )}
               {darkMode ? (
                 <IoMoonOutline
                   className={`text-[#E4E6E8]  text-[21px] cursor-pointer ${
-                    isAbout ? "text-white" : ""
+                    (isAbout && scrolled) || isProjects || isHome
+                      ? "text-black dark:text-white"
+                      : "text-white"
                   }`}
                   onClick={() => {
                     toggleTheme();
@@ -141,7 +166,9 @@ function Navbar() {
               ) : (
                 <LuSunDim
                   className={`text-black text-[21px] cursor-pointer ${
-                    isAbout ? "text-white" : ""
+                    (isAbout && scrolled) || isProjects || isHome
+                      ? "text-black dark:text-white"
+                      : "text-white"
                   }`}
                   onClick={() => {
                     toggleTheme();

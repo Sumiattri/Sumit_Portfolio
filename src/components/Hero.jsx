@@ -1,11 +1,12 @@
 import ImageDark from "../assets/images/josh-happy-dark.webp";
 import ImageLight from "../assets/images/josh-happy-light.webp";
 import { useTheme } from "../context/ThemeContext";
+import Stars from "./Stars";
 
 function Hero() {
   const { darkMode } = useTheme();
   return (
-    <div className={` ${darkMode ? "dark" : ""}  `}>
+    <div className={` ${darkMode ? "dark" : ""} relative `}>
       <div className="  h-[547px]  sm:-mt-[164px] -mt-[220px] pt-[124px] bg-[#9FD3EE]  dark:bg-gradient-to-b from-[#111B27] to-[#2f4a5b] relative  overflow-clip   ">
         <div className=" relative flex flex-col items-center justify-end overflow-hidden ">
           <svg

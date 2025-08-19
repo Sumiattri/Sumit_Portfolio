@@ -93,7 +93,14 @@
 }
 
 @theme {
-  --breakpoint-xxs: 390px;
+  --breakpoint-xs: 550px;
   --breakpoint-2xl: 100rem;
   --breakpoint-3xl: 120rem;
+}
+
+@media (min-width: 1400px) {
+  .custom-padding {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
 }

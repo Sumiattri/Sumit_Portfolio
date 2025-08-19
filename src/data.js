@@ -26,4 +26,13 @@ export const projects = [
     live: "https://3d-apple-website-plum.vercel.app/",
     color: "#C2491D",
   },
+  {
+    title: "NoteBookLM",
+    description:
+      "NotebookLM is a full-stack web app inspired by Google's NotebookLM. It allows users to upload PDFs, process them using LangChain and HuggingFace embeddings, store and retrieve vector representations using Qdrant, and chat with the document using an AI model powered by the HugingFace API.",
+    src: "/notebooklm.png",
+    git: "https://github.com/Sumiattri/NotebookLM",
+    live: "https://notebook-lm-123.vercel.app/",
+    color: "#90CDEB",
+  },
 ];

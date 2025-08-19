@@ -1,28 +1,74 @@
+import { useState, useRef, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import DistanceMap from "./DiatanceMap";
 import { BsFillEmojiSunglassesFill } from "react-icons/bs";
+import useSound from "use-sound";
 
 function Info() {
   const { darkMode } = useTheme();
+  const buttonRef1 = useRef(null);
+  const buttonRef2 = useRef(null);
+  const buttonRef3 = useRef(null);
+  const buttonRef4 = useRef(null);
+
+  const [play] = useSound("/audio/909-drums.mp3", {
+    sprite: {
+      kick: [0, 250], // start: 0ms, duration: 250ms
+      snare: [300, 250],
+      hihat: [600, 300],
+      clap: [950, 300],
+    },
+  });
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key.toLowerCase() === "q") {
+        buttonRef1.current?.click();
+      }
+      if (e.key.toLowerCase() === "w") {
+        buttonRef2.current?.click();
+      }
+      if (e.key.toLowerCase() === "e") {
+        buttonRef3.current?.click();
+      }
+      if (e.key.toLowerCase() === "r") {
+        buttonRef4.current?.click();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <div
       className={`${
         darkMode ? "dark" : ""
-      } h-auto dark:bg-[#0D0F12]   bg-white w-full px-55 pb-50`}
+      } h-auto dark:bg-[#0D0F12]   bg-white w-full custom-padding  lg:px-30 md:px-7 px-7   pb-30 pt-20 overflow-hidden`}
     >
-      <div className="grid grid-cols-4 gap-4 min-h-[800px] text-[15px] text-[#E4E6E8]">
+      <div className="grid md:grid-cols-4 sm:grid-cols-5 grid-cols-2 gap-4 min-h-[800px] text-[15px] text-[#E4E6E8]">
         {/* Top section */}
-        <div className="col-span-2 row-span-2  rounded-2xl p-4 bg-[#1B2532]">
+        <div className="md:col-span-2 sm:col-span-3 col-span-2 md:row-span-2 sm:row-span-4  row-span-10  rounded-2xl p-4 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black">
           <DistanceMap />
         </div>
-        <div className="col-span-1 row-span-1 bg-[#1B2532] rounded-2xl  text-center    font-[font3] flex justify-center items-center px-[25px] ">
-          I am 22 years old, currently pursuing my Bachelor of Technology at the
-          Indian Institute of Information Technology, Ranchi.
+        <div className="md:col-span-1 sm:col-span-2 col-span-1  md:row-span-1 row-span-2  dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl  text-center py-5    font-[font3] flex justify-center items-center lg:px-[25px] md:px-[10px] px-2">
+          <div>
+            I am 22 years old, currently pursuing my Bachelor of Technology at
+            the
+            <section
+              className="text-[#FF4676] px-1 inline font-semibold"
+              style={{ fontStyle: "italic" }}
+            >
+              Indian Institute of Information Technology, Ranchi.
+            </section>
+          </div>
         </div>
-        <div className="col-span-1 row-span-1 bg-[#1B2532] rounded-2xl p-4">
-          Po
+        <div className="md:col-span-1 sm:col-span-2 col-span-1  md:row-span-1 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-4">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum rem
+          provident pariatur dolorem eum illo sequi cupiditate aut dolorum
+          beatae.
         </div>
-        <div className="col-span-1 row-span-1  bg-[#1B2532] rounded-2xl flex items-center px-7 gap-2  ">
+        <div className="md:col-span-1 sm:col-span-2  md:row-span-1 row-span-2  dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl flex items-center lg:px-7 md:px-2 px-3 gap-2 py-5  ">
           <div className="-mt-5">
             <svg
               width="50"
@@ -30,21 +76,20 @@ function Info() {
               viewBox="0 0 50 100"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              class=""
             >
               <g
-                stroke="white"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                className="stroke-black dark:stroke-white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <circle cx="25" cy="35" r="15" class="h1indsjw"></circle>
+                <circle cx="25" cy="35" r="15"></circle>
                 <line
                   x1="25"
                   y1="50"
                   x2="25"
                   y2="80"
-                  className="border border-amber-500 text-blue-400 hover:scale-110"
+                  className="border border-amber-500 text-blue-400  hover:scale-110"
                 ></line>
                 <line x1="25" y1="80" x2="15" y2="100"></line>
                 <line x1="25" y1="80" x2="35" y2="100"></line>
@@ -54,32 +99,110 @@ function Info() {
             </svg>
           </div>
           <div className="text-center">
-            <p className="font-[font3] font-bold">I'm 5'11" tall</p>
+            <p className="font-[font3] font-bold cursor-pointer">
+              I'm 5'11" tall.
+            </p>
             <p className="font-[font3] ">
               At this height, I get better Wi-Fi reception.
-              <BsFillEmojiSunglassesFill className="inline ml-1 text-[#F4A10E]" />
+              <BsFillEmojiSunglassesFill className="inline ml-1 text-[#F4A10E] -mt-1" />
             </p>
           </div>
         </div>
-        <div className="col-span-1 row-span-3 bg-[#1B2532] rounded-2xl p-4">
+        <div className="md:col-span-1 sm:col-span-3 md:row-span-3 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-4">
           Creativity
         </div>
 
-        {/* Middle section */}
-        <div className="col-span-1 row-span-2 bg-[#1B2532] rounded-2xl p-4">
-          Sound-box
-        </div>
-        <div className="col-span-2 row-span-2 bg-[#1B2532] rounded-2xl p-4">
-          P-E
+        {/* Middle section  */}
+        <div className="md:col-span-3 sm:col-span-5 col-span-2 row-span-2 dark:bg-[#0D0F12] bg-white rounded-2xl  flex sm:flex-row flex-col gap-4  ">
+          <div className="dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black w-full rounded-2xl flex flex-col gap-2 items-center pb-5 ">
+            <div className="flex gap-3 p-4 font-[font3] font-bold text-[#E4E6E8] ">
+              <button
+                ref={buttonRef1}
+                onClick={() => play({ id: "kick" })}
+                className={`relative text-sm cursor-pointer px-[18px] py-3  rounded-lg bg-gradient-to-b from-gray-700 to-gray-900   font-bold   shadow-[2px_4px_0px_0_rgba(0,0,0,0.8),-2px_4px_0px_0_rgba(0,0,0,0.8),0px_4px_2px_0_gray]  active:translate-y-[3px] active:shadow-[2px_2px_0px_0_rgba(0,0,0,0.8),-2px_2px_0px_0_rgba(0,0,0,0.8)] transition-all duration-150 `}
+              >
+                Q
+              </button>
+              <button
+                ref={buttonRef2}
+                onClick={() => play({ id: "snare" })}
+                className={`relative cursor-pointer px-4 py-3 rounded-lg bg-gradient-to-b from-gray-700 to-gray-900   font-bold text-sm  shadow-[2px_4px_0px_0_rgba(0,0,0,0.8),-2px_4px_0px_0_rgba(0,0,0,0.8),0px_4px_2px_0_gray]  active:translate-y-[3px] active:shadow-[2px_2px_0px_0_rgba(0,0,0,0.8),-2px_2px_0px_0_rgba(0,0,0,0.8)] transition-all duration-150 `}
+              >
+                W
+              </button>
+              <button
+                ref={buttonRef3}
+                onClick={() => play({ id: "hihat" })}
+                className={`relative cursor-pointer px-5 py-3 rounded-lg bg-gradient-to-b from-gray-700 to-gray-900   font-bold text-sm  shadow-[2px_4px_0px_0_rgba(0,0,0,0.8),-2px_4px_0px_0_rgba(0,0,0,0.8),0px_4px_2px_0_gray]  active:translate-y-[3px] active:shadow-[2px_2px_0px_0_rgba(0,0,0,0.8),-2px_2px_0px_0_rgba(0,0,0,0.8)] transition-all duration-150 `}
+              >
+                E
+              </button>
+              <button
+                ref={buttonRef4}
+                onClick={() => play({ id: "clap" })}
+                className={`relative cursor-pointer px-5 py-3  rounded-lg bg-gradient-to-b from-gray-700 to-gray-900   font-bold text-sm  shadow-[2px_4px_0px_0_rgba(0,0,0,0.8),-2px_4px_0px_0_rgba(0,0,0,0.8),0px_4px_2px_0_gray]  active:translate-y-[3px] active:shadow-[2px_2px_0px_0_rgba(0,0,0,0.8),-2px_2px_0px_0_rgba(0,0,0,0.8)] transition-all duration-150 `}
+              >
+                R
+              </button>
+            </div>
+            <div className="px-8 text-center font-[font3] text-[15px]  ">
+              I’m fascinated by how sound can make the web more alive - these
+              buttons are a small taste of the fun I have experimenting with
+              audio in development.
+            </div>
+          </div>
+          <div className="dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black w-full p-4 rounded-2xl">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            maiores mollitia numquam aliquam quod explicabo et voluptatum esse
+            ab inventore?
+          </div>
         </div>
 
         {/* Bottom section */}
-        <div className="col-span-1 bg-[#1B2532] rounded-lg p-4">Hobby</div>
-        <div className="col-span-1 row-span-3 bg-[#1B2532] rounded-lg p-4">
-          Exp
+        <div className="md:col-span-1 z-1 sm:col-span-2 col-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl   sm:pt-5 relative font-[font3] text-center  ">
+          <div className="absolute lg:block  hidden z-0  -left-36   -top-15  ">
+            <img
+              src="/flat-paper-coffee-cup.png"
+              alt=""
+              className="h-60  -rotate-48"
+            />
+          </div>
+          <div className="relative z-1 w-full lg:block flex flex-col justify-center items-center  dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black h-full rounded-2xl px-4  pb-5">
+            <div className="lg:hidden block">
+              <img src="/flat-paper-coffee-cup.png" alt="" className="h-30" />
+            </div>
+            <div>
+              Some people are tea people, some are coffee people — I’m both.{" "}
+              <br /> My productivity runs on a perfectly balanced blend of
+              caffeine diplomacy.
+            </div>
+          </div>
         </div>
-        <div className="col-span-2 row-span-3 bg-[#1B2532] rounded-lg p-4">
-          Any Course Exp
+        <div className="sm:col-span-3 relative z-2 col-span-2  row-span-3 dark:bg-[#0D0F12] bg-white rounded-2xl flex md:flex-row flex-col gap-4  box-border">
+          <div className="w-full h-78 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-2 overflow-hidden">
+            <img src="/setup.jpeg" alt="" className="rounded-xl " />
+            <div className="font-[font3] text-center pt-5">
+              My little command center — where caffeine, chaos, and code meet in
+              perfect harmony.
+            </div>
+          </div>
+          <div className="w-full dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black  rounded-2xl p-4 box-border font-[font3] ">
+            <div className="absolute -right-30 sm:-top-30 -top-17 h-60 w-60 z-0">
+              <img alt="" src="/joy-of-react-mascot.png"></img>
+            </div>
+            <div className="relative z-1">
+              When I first stepped into coding, web development wasn’t even on
+              my radar. My heart was set on game development — thanks to my love
+              for gaming (and that one weekend I played for over 16 hours
+              straight ). But somewhere between physics engines and pixel art, I
+              stumbled into web dev… and stayed. <br /> Turns out, the browser
+              can be just as much of a playground as any game world — every
+              animation, API call, and line of JavaScript had me hooked. <br />
+              Now, I mix a bit of that “game dev curiosity” into everything I
+              build, whether it’s an interactive UI, a map that connects people,
+              or just a small feature that makes someone smile.
+            </div>
+          </div>
         </div>
       </div>
     </div>

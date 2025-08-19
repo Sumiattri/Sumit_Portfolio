@@ -5,9 +5,9 @@ function AboutHero() {
 
   return (
     <div
-      className={`w-screen md:h-[80vh] sm:h-[90vh] max-h-[1120px] h-auto relative  -mt-23  ${
+      className={`w-screen md:h-[80vh] sm:h-[90vh] max-h-[1120px] h-auto relative  sm:-mt-30 -mt-23  ${
         darkMode ? "dark" : ""
-      } bg-gradient-to-b from-[#0E0F12] to-[#14181C]/98 bg-white overflow-hidden flex     `}
+      } bg-gradient-to-b from-[#0E0F12] to-[#14181C]/98  overflow-hidden flex     `}
     >
       <div className=" h-full  w-[100%] mx-auto max-w-[62rem]  z-3 relative  md:pt-[200px] sm:pt-[300px] pt-[340px] lg:px-20 sm:px-10  ">
         <div className="sm:mx-0 mx-6 relative z-10 pb-15">
@@ -49,6 +49,7 @@ function AboutHero() {
         className=" absolute bottom-0 left-0  min-w-[1000px] sm:block hidden"
       >
         <path
+          // className="dark:fill-[#262B31] fill-[#9DD3ED]"
           fill="#262B31"
           d="M824.001 403L875.501 422H1999V63.1446C1977.5 77.3383 1961.18 93.6986 1958 93.5001C1950 93.0001 1946 25.5001 1846 11.5001C1746 -2.49994 1705.5 70.0001 1698.5 69.5001C1691.5 69.0001 1678 -0.499932 1559 0.500068C1440 1.50007 1439.5 117 1432.5 119.5C1425.5 122 1363.5 79.0001 1292 113.5C1220.5 148 1244.5 212 1237.5 216C1230.5 220 1191 172 1106.5 198.5C1022 225 1035 289 1024 291C1013 293 967.001 231.5 875.501 278C784.001 324.5 824.001 403 824.001 403Z"
         ></path>

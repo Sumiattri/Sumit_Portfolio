@@ -33,7 +33,7 @@ function Redirect() {
               stop();
               setIsHovering(false);
             }}
-            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] inline  "
+            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] inline hover:underline underline-offset-4 "
           >
             Know The Guy Behind The Screen
             <svg
@@ -93,7 +93,7 @@ function Redirect() {
               />
             </svg>
           </NavLink>
-          <p className="font-[font3] text-sm dark:text-white text-black">
+          <p className="font-[font3] text-sm dark:text-white text-black ">
             Peek into my journey, thoughts, and what makes me tick.
           </p>
         </div>
@@ -108,7 +108,7 @@ function Redirect() {
               stop();
               setIsHovering1(false);
             }}
-            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] "
+            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] hover:underline underline-offset-4"
           >
             Stuff I've been building
             <svg
@@ -182,7 +182,7 @@ function Redirect() {
               stop();
               setIsHovering2(false);
             }}
-            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] "
+            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] hover:underline underline-offset-4 "
           >
             Shoot me a message
             <svg

@@ -10,6 +10,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import axios from "axios";
+import { useTheme } from "../context/ThemeContext";
 
 // Fix icon issue with react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -37,6 +38,7 @@ function FitBounds({ points }) {
 }
 
 const DistanceMap = () => {
+  const { darkMode } = useTheme();
   // Fixed location: Faridabad, Haryana
   const myLocation = { lat: 28.4089, lng: 77.3178 }; // Faridabad coordinates
   const [userLocation, setUserLocation] = useState(null);
@@ -85,7 +87,11 @@ const DistanceMap = () => {
     return <p className="text-center ">Loading map and locations...</p>;
 
   return (
-    <div className="w-full h-full pb-20  rounded-md overflow-hidden">
+    <div
+      className={` ${
+        darkMode ? "dark" : ""
+      } w-full h-full pb-20  rounded-md overflow-hidden relative z-0`}
+    >
       <div className="h-full w-full">
         <MapContainer
           dragging={false}
@@ -110,7 +116,7 @@ const DistanceMap = () => {
         </MapContainer>
       </div>
 
-      <div className="text-center p-4 text-white font-[font3] text-[15px]">
+      <div className="text-center p-4 dark:text-white text-black font-[font3] text-[15px]">
         <section className="">
           I am from Haryana, India, roughly
           <strong
