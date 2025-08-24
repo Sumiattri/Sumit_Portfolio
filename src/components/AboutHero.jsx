@@ -1,4 +1,5 @@
 import { useTheme } from "../context/ThemeContext";
+import Lanyard from "./Lanyard";
 
 function AboutHero() {
   const { darkMode } = useTheme();
@@ -7,7 +8,7 @@ function AboutHero() {
     <div
       className={`w-screen md:h-[80vh] sm:h-[90vh] max-h-[1120px] h-auto relative  sm:-mt-30 -mt-23  ${
         darkMode ? "dark" : ""
-      } bg-gradient-to-b from-[#0E0F12] to-[#14181C]/98  overflow-hidden flex     `}
+      } bg-gradient-to-b from-[#0E0F12] to-[#14181C]/98  overflow-hidden flex    `}
     >
       <div className=" h-full  w-[100%] mx-auto max-w-[62rem]  z-3 relative  md:pt-[200px] sm:pt-[300px] pt-[340px] lg:px-20 sm:px-10  ">
         <div className="sm:mx-0 mx-6 relative z-10 pb-15">
@@ -37,8 +38,11 @@ function AboutHero() {
           </div>
         </div>
         <div className="w-full md:hidden absolute bottom-0 h-[85%] bg-gradient-to-b z-3 from-transparent via-[#181C20] to-[#0D0F12]"></div>
-        <div className="absolute z-1  md:bottom-5 sm:bottom-40 bottom-110  sm:-right-20 -right-30 ">
+        <div className="absolute  lg:hidden block z-1   md:top-5 sm:bottom-40 bottom-110  sm:-right-0 -right-30 ">
           <img className="w-125  " src="/sumit.png" alt="" />
+        </div>
+        <div className="absolute inset-0  lg:flex  hidden  ">
+          <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
         </div>
       </div>
       <svg

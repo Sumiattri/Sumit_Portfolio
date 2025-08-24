@@ -38,7 +38,7 @@ function ProjectCard({
   return (
     <div
       ref={container}
-      className="h-[100vh] flex items-center justify-center sticky top-0"
+      className="h-[100vh] flex items-center justify-center sticky top-0 "
     >
       <motion.div
         style={{
@@ -46,7 +46,7 @@ function ProjectCard({
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className="flex  flex-col relative -top-[25%] sm:h-[500px] h-auto sm:rounded-4xl rounded-xl sm:w-[1000px] w-[95%] sm:px-15 px-5 sm:pt-10 sm:pb-0 pb-7"
+        className="relative flex   flex-col  -top-[25%] sm:h-[500px] h-auto sm:rounded-4xl rounded-xl sm:w-[1000px] w-[95%] sm:px-15 px-5 sm:pt-10 sm:pb-0 pb-7"
       >
         <h2 className="text-center m-0 text-[28px] sm:block hidden  font-[font4]">
           {title}

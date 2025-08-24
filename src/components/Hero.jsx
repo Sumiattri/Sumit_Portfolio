@@ -1,10 +1,25 @@
 import ImageDark from "../assets/images/josh-happy-dark.webp";
 import ImageLight from "../assets/images/josh-happy-light.webp";
 import { useTheme } from "../context/ThemeContext";
-import Stars from "./Stars";
+// import Stars from "./Stars";
+import { useState } from "react";
+import SplitText from "./SplitText";
 
 function Hero() {
   const { darkMode } = useTheme();
+  const [pos, setPos] = useState({ x: 50, y: 50 });
+
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setPos({ x, y });
+  };
+
   return (
     <div className={` ${darkMode ? "dark" : ""} relative `}>
       <div className="  h-[547px]  sm:-mt-[164px] -mt-[220px] pt-[124px] bg-[#9FD3EE]  dark:bg-gradient-to-b from-[#111B27] to-[#2f4a5b] relative  overflow-clip   ">
@@ -62,6 +77,24 @@ function Hero() {
           <h1 className="font-[font4] md:text-[46px] sm:text-[40px] text-[27px]">
             Hi there! I'm Sumit.
           </h1>
+          {/* <SplitText
+            text=" Hi there! I'm Sumit."
+            className="font-[font4] md:text-[46px] sm:text-[40px] text-[27px]"
+            delay={60}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          /> */}
+          {/* <p className="ml-60 font-[font3] text-md">
+            {" "}
+            – full stack developer....
+          </p> */}
           <p className="font-[font3] sm:mt-5 mt-4 sm:max-w-full max-w-[250px]">
             Every line of code tells a story. Welcome to mine.
           </p>

@@ -4,11 +4,11 @@ import Footer from "../components/Footer";
 
 function About() {
   return (
-    <>
+    <div>
       <AboutHero />
       <Info />
       <Footer />
-    </>
+    </div>
   );
 }
 

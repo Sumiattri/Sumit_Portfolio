@@ -5,6 +5,8 @@ import { GiCoffeeCup } from "react-icons/gi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FiGithub } from "react-icons/fi";
+import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 import { useState, useEffect, useRef } from "react";
 
@@ -40,7 +42,7 @@ function Footer() {
       ref={footerRef}
       className={` ${
         darkMode ? "dark" : ""
-      }  relative  overflow-hidden w-screen h-[430px] -mt-2 bg-[#90CDEB] dark:bg-gradient-to-b from-[#132331] to-[#255770]`}
+      } max-w-[1500px]  relative  overflow-hidden w-screen h-[430px] -mt-2 bg-[#90CDEB] dark:bg-gradient-to-b from-[#132331] to-[#255770]`}
     >
       <svg
         width="320rem"
@@ -58,7 +60,7 @@ function Footer() {
       </svg>
 
       <div
-        className={`absolute md:block hidden z-0  left-43 t `}
+        className={`absolute md:block hidden  z-0  left-43  `}
         style={{ top: `${topValue}px` }}
         // style={{ transform: `translateY(${topValue}px)` }}
       >
@@ -103,13 +105,19 @@ function Footer() {
           </p>
         </div>
       </div>
-      <div className="absolute  md:right-40 sm:right-20 right-71 bottom-10 sm:bottom-10">
-        <div className="flex  sm:gap-10 gap-4">
-          <a href="https://github.com/Sumiattri" target="_blank">
-            <FiGithub className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:text-black  text-gray-700" />
+      <div className="absolute  md:right-40 sm:right-20 right-58 bottom-10 sm:bottom-10">
+        <div className="flex  sm:gap-6 gap-4">
+          <a href="https://github.com/Sumiattri" target="_blank" className="">
+            <FiGithub className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:animate-wiggle hover:text-black   text-gray-700" />
           </a>
           <a href="https://www.linkedin.com/in/sumit-attri/" target="_blank">
-            <FaLinkedinIn className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:text-black  text-gray-700" />
+            <FaLinkedinIn className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:text-black hover:animate-wiggle  text-gray-700" />
+          </a>
+          <a href="https://www.instagram.com/sumitattri990/" target="blank">
+            <FaInstagram className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:text-black  hover:animate-wiggle text-gray-700" />
+          </a>
+          <a href="https://x.com/Sumitattri63" target="blank">
+            <FaXTwitter className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:text-black hover:animate-wiggle  text-gray-700" />
           </a>
         </div>
       </div>
@@ -118,3 +126,51 @@ function Footer() {
 }
 
 export default Footer;
+
+//  <a
+//               className="flex  gap-3 items-center font-[font2] text-[#0B82C0] text-xl "
+//               href="https://www.linkedin.com/in/sumit-attri/"
+//               target="blank"
+//             >
+//               <img
+//                 src="src/assets/icons/linkedin.png"
+//                 alt=""
+//                 className="h-10 w-10"
+//               />
+//               {/* <p>Linkedin</p> */}
+//             </a>
+//             <a
+//               href="https://github.com/Sumiattri"
+//               target="blank"
+//               className="flex items-center gap-3 "
+//             >
+//               <FiGithub className="text-3xl" />
+//               <p className="font-[font2] text-xl ">Github</p>
+//             </a>
+//             <a
+//               href="https://www.instagram.com/sumitattri990/"
+//               target="blank"
+//               className="flex gap-3 items-center"
+//             >
+//               <img
+//                 src="src/assets/icons/social.png"
+//                 alt=""
+//                 className="h-10 w-10"
+//               />
+//               <p className="font-[font2]  text-xl text-[#EF0074]">
+//                 {" "}
+//                 Instagram{" "}
+//               </p>
+//             </a>
+//             <a
+//               target="blank"
+//               href="https://x.com/Sumitattri63"
+//               className="flex gap-3 items-center"
+//             >
+//               <img
+//                 src="src/assets/icons/twitter.png"
+//                 alt="twitter"
+//                 className="h-10 w-10"
+//               />
+//               <p className="font-[font2]  text-xl text-[#179ACD]">Twitter</p>
+//             </a>

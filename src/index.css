@@ -41,6 +41,24 @@
   src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/font2/Wotfard_Regular/Wotfard_Regular_Webfont/Wotfard-Regular-webfont/wotfard-regular-webfont.woff2")
     format("woff2");
 }
+@font-face {
+  font-family: font6;
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/fonts/proximanova-bold-webfont.woff")
+    format("woff");
+}
+
+@font-face {
+  font-family: font7;
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/fonts/proximanova-light-webfont.woff")
+    format("woff");
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -79,6 +97,19 @@
     }
     100% {
       transform: rotate(0deg);
+    }
+  }
+}
+
+@theme {
+  --animate-wiggle: wiggle 0.4s ease-in-out 1;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-7deg);
     }
   }
 }

@@ -12,16 +12,66 @@ function Redirect() {
     volume: 0.3,
     soundEnabled: isSoundOn,
   });
+  const [playHover2, { stop: stop3 }] = useSound(
+    "/audio/plunger-immediate.mp3",
+    {
+      volume: 0.18,
+      soundEnabled: isSoundOn,
+    }
+  );
 
   const ARROW_DELAY = 205;
+
+  const tech_stack = [
+    "Javascript",
+    "React",
+    "Tailwindcss",
+    "Next JS",
+    "HTML",
+    "CSS",
+    "Framer Motion",
+    "GSAP",
+    "Express",
+    "Mongodb",
+    "NodeJS",
+    "Qdrantdb",
+    "Cloudinary",
+  ];
 
   return (
     <div
       className={`${
         darkMode ? "dark" : ""
-      } dark:bg-[#0D0F12] bg-white  sm:h-97 h-[calc(100vh-300px)] sm:pt-10 pt-20 text-white `}
+      } dark:bg-[#0D0F12] bg-white relative  sm:h-97 h-[calc(100vh-300px)] sm:pt-10 pt-20 text-white `}
     >
-      <div className="max-w-[1020px] sm:px-[40px] pl-[20px] pr-[40px] mx-auto flex  flex-col gap-10 items-start ">
+      <div className="absolute md:block hidden lg:right-[8%] right-[0%] h-40 lg:w-110 w-80 top-15 z-1000 font-[font2] ">
+        <p className="text-[#FF1B80] tracking-wider "> MY TOOLBOX</p>
+        <div className=" w-full pt-8 flex gap-x-5 gap-y-3  flex-wrap cursor-pointer">
+          {tech_stack.map((item, index) => {
+            return (
+              <div
+                key={index}
+                onMouseEnter={() => {
+                  setTimeout(() => {
+                    playHover2();
+                  }, [20]);
+                }}
+                onMouseLeave={() => {
+                  stop3();
+                }}
+                className="relative py-[6px] px-2  "
+              >
+                <div className="relative z-0 text-sm dark:text-[#E4E6E8] text-black font-[font3] ">
+                  {item}
+                </div>
+                <div className="absolute inset-0 border border-[#3A4048] transition-transform duration-300 hover:scale-115 rounded-[8px]"></div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="max-w-[1020px] sm:px-[40px] pl-[20px] pr-[20px] mx-auto flex  flex-col gap-10 items-start  ">
         <div>
           <NavLink
             to="/about"
@@ -33,9 +83,10 @@ function Redirect() {
               stop();
               setIsHovering(false);
             }}
-            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] inline hover:underline underline-offset-4 "
+            className="dark:text-[#FF1B80] text-[#E60066] font-[font2] inline  tracking-wider"
           >
-            Know The Guy Behind The Screen
+            {/* Know The Guy Behind The Screen */}
+            KNOW THE GUY BEHIND THE SCREEN
             <svg
               width="36"
               height="12"
@@ -108,9 +159,10 @@ function Redirect() {
               stop();
               setIsHovering1(false);
             }}
-            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] hover:underline underline-offset-4"
+            className="dark:text-[#FF1B80] text-[#E60066] font-[font2]  tracking-wider"
           >
-            Stuff I've been building
+            {/* Stuff I've been building */}
+            STUFF I HAVE BEEN BUILDING
             <svg
               width="36"
               height="12"
@@ -174,6 +226,7 @@ function Redirect() {
         </div>
         <div>
           <NavLink
+            to="/contact"
             onMouseEnter={() => {
               playHover();
               setIsHovering2(true);
@@ -182,9 +235,10 @@ function Redirect() {
               stop();
               setIsHovering2(false);
             }}
-            className="dark:text-[#FF1B80] text-[#E60066] font-[font3] hover:underline underline-offset-4 "
+            className="dark:text-[#FF1B80] text-[#E60066] font-[font2]   tracking-wider"
           >
-            Shoot me a message
+            {/* Shoot me a message */}
+            SHOOT ME A MESSAGE
             <svg
               width="36"
               height="12"
@@ -252,3 +306,45 @@ function Redirect() {
 }
 
 export default Redirect;
+
+{
+  /* <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            Javascript
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            React JS
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            Tailwind
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            Framer Motion
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            GSAP
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            Next JS
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            HTML
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            CSS
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            fsrsf
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            dscds
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            dsds
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            sdc
+          </div>
+          <div className="relative  transition-all duration-300  outline-2 hover:outline-offset-3 outline-neutral-700 rounded-md px-2 py-1  text-sm">
+            dsf
+          </div> */
+}

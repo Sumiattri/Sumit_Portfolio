@@ -3,6 +3,9 @@ import { useTheme } from "../context/ThemeContext";
 import DistanceMap from "./DiatanceMap";
 import { BsFillEmojiSunglassesFill } from "react-icons/bs";
 import useSound from "use-sound";
+import FallingText from "./FallingText";
+import { FiFileText } from "react-icons/fi";
+import BlobCursor from "./cursor/BlobCursor";
 
 function Info() {
   const { darkMode } = useTheme();
@@ -11,12 +14,14 @@ function Info() {
   const buttonRef3 = useRef(null);
   const buttonRef4 = useRef(null);
 
+  const items = [{ icon: <FiFileText />, color: "#ff4676", label: "Resume" }];
+
   const [play] = useSound("/audio/909-drums.mp3", {
     sprite: {
-      kick: [0, 250], // start: 0ms, duration: 250ms
-      snare: [300, 250],
+      kick: [0, 200], // start: 0ms, duration: 250ms
+      snare: [330, 200],
       hihat: [600, 300],
-      clap: [950, 300],
+      clap: [900, 300],
     },
   });
 
@@ -46,7 +51,7 @@ function Info() {
         darkMode ? "dark" : ""
       } h-auto dark:bg-[#0D0F12]   bg-white w-full custom-padding  lg:px-30 md:px-7 px-7   pb-30 pt-20 overflow-hidden`}
     >
-      <div className="grid md:grid-cols-4 sm:grid-cols-5 grid-cols-2 gap-4 min-h-[800px] text-[15px] text-[#E4E6E8]">
+      <div className="grid max-w-[1200px] md:grid-cols-4 sm:grid-cols-5 grid-cols-2 gap-4 min-h-[800px] text-[15px] text-[#E4E6E8]">
         {/* Top section */}
         <div className="md:col-span-2 sm:col-span-3 col-span-2 md:row-span-2 sm:row-span-4  row-span-10  rounded-2xl p-4 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black">
           <DistanceMap />
@@ -63,10 +68,27 @@ function Info() {
             </section>
           </div>
         </div>
-        <div className="md:col-span-1 sm:col-span-2 col-span-1  md:row-span-1 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum rem
-          provident pariatur dolorem eum illo sequi cupiditate aut dolorum
-          beatae.
+        <div className="md:col-span-1 sm:col-span-2 col-span-1  md:row-span-1 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black flex items-center gap-2 rounded-2xl p-4 font-[font3] sm:text-center">
+          <div>
+            Click here for the boring version of me… also known as my {}
+            <span className="text-[#FF4676]  " style={{ fontStyle: "italic" }}>
+              resume
+            </span>
+            .
+          </div>
+          <div className="w-full h-auto pt-3 ">
+            <a
+              className="cursor-pointer"
+              href="https://drive.google.com/file/d/1rUoINZwM6ge1lEI9MLybmNGvf0HDqN_t/view?usp=drive_link"
+              target="blank"
+            >
+              <FiFileText className="sm:text-6xl text-3xl cursor-pointer -mt-5  mx-auto text-gray-400 hover:scale-110 transition-all duration-300 " />
+              {/* <GlassIcons
+                items={items}
+                className="custom-class cursor-pointer"
+              /> */}
+            </a>
+          </div>
         </div>
         <div className="md:col-span-1 sm:col-span-2  md:row-span-1 row-span-2  dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl flex items-center lg:px-7 md:px-2 px-3 gap-2 py-5  ">
           <div className="-mt-5">
@@ -108,8 +130,25 @@ function Info() {
             </p>
           </div>
         </div>
-        <div className="md:col-span-1 sm:col-span-3 md:row-span-3 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-4">
-          Creativity
+        <div className="relative md:col-span-1   sm:col-span-3 md:row-span-3 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-4">
+          <BlobCursor
+            blobType="circle"
+            fillColor="#5227FF"
+            trailCount={3}
+            sizes={[60, 125, 75]}
+            innerSizes={[20, 35, 25]}
+            innerColor="rgba(255,255,255,0.8)"
+            opacities={[0.6, 0.6, 0.6]}
+            shadowColor="rgba(0,0,0,0.75)"
+            shadowBlur={5}
+            shadowOffsetX={10}
+            shadowOffsetY={10}
+            filterStdDeviation={30}
+            useFilter={true}
+            fastDuration={0.1}
+            slowDuration={0.5}
+            zIndex={100}
+          />
         </div>
 
         {/* Middle section  */}
@@ -152,9 +191,17 @@ function Info() {
             </div>
           </div>
           <div className="dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black w-full p-4 rounded-2xl">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            maiores mollitia numquam aliquam quod explicabo et voluptatum esse
-            ab inventore?
+            <FallingText
+              text={`Watch creativity drop, bounce, and settle into something unexpected and fun.`}
+              highlightWords={["drop", "bounce", "settle", "unexpected", "fun"]}
+              highlightClass="highlighted"
+              trigger="hover"
+              backgroundColor="transparent"
+              wireframes={false}
+              gravity={0.2}
+              fontSize="14px"
+              mouseConstraintStiffness={0.9}
+            />
           </div>
         </div>
 

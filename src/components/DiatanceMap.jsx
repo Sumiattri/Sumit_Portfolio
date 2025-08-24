@@ -84,7 +84,11 @@ const DistanceMap = () => {
   }, [userLocation]);
 
   if (!userLocation)
-    return <p className="text-center ">Loading map and locations...</p>;
+    return (
+      <p className="text-center font-[font3] text-[#ff1b80]">
+        Just wait till I find you...
+      </p>
+    );
 
   return (
     <div
