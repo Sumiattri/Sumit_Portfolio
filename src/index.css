@@ -10,35 +10,35 @@
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;
-  src: url("assets/fonts/cartograph-extra-bold.woff2") format("woff2");
+  src: url("/fonts/cartograph-extra-bold.woff2") format("woff2");
 }
 @font-face {
   font-family: font2;
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;
-  src: url("src/assets/fonts/wotfard-medium-webfont.woff2") format("woff2");
+  src: url("/fonts/wotfard-medium-webfont.woff2") format("woff2");
 }
 @font-face {
   font-family: font3;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("src/assets/fonts/wotfard-regular-webfont.woff2") format("woff2");
+  src: url("/fonts/wotfard-regular-webfont.woff2") format("woff2");
 }
 @font-face {
   font-family: font4;
   font-style: normal;
   font-weight: 200 700;
   font-display: swap;
-  src: url("src/assets/fonts/wotfard-semibold-webfont.woff2") format("woff2");
+  src: url("/fonts/wotfard-semibold-webfont.woff2") format("woff2");
 }
 @font-face {
   font-family: font5;
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/font2/Wotfard_Regular/Wotfard_Regular_Webfont/Wotfard-Regular-webfont/wotfard-regular-webfont.woff2")
+  src: url("/fonts/Wotfard_Regular/Wotfard_Regular_Webfont/Wotfard-Regular-webfont/wotfard-regular-webfont.woff2")
     format("woff2");
 }
 @font-face {
@@ -46,8 +46,7 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/fonts/proximanova-bold-webfont.woff")
-    format("woff");
+  src: url("/fonts/proximanova-bold-webfont.woff") format("woff");
 }
 
 @font-face {
@@ -55,8 +54,7 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("/Users/sumitattri/Downloads/code/FullStackWebDev/Sumit_Portfolio/src/assets/fonts/proximanova-light-webfont.woff")
-    format("woff");
+  src: url("/fonts/proximanova-light-webfont.woff") format("woff");
 }
 
 * {
