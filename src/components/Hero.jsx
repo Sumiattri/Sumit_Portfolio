@@ -3,7 +3,6 @@ import ImageLight from "../assets/images/josh-happy-light.webp";
 import { useTheme } from "../context/ThemeContext";
 // import Stars from "./Stars";
 import { useState } from "react";
-import SplitText from "./SplitText";
 
 function Hero() {
   const { darkMode } = useTheme();
@@ -77,20 +76,7 @@ function Hero() {
           <h1 className="font-[font4] md:text-[46px] sm:text-[40px] text-[27px]">
             Hi there! I'm Sumit.
           </h1>
-          {/* <SplitText
-            text=" Hi there! I'm Sumit."
-            className="font-[font4] md:text-[46px] sm:text-[40px] text-[27px]"
-            delay={60}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            onLetterAnimationComplete={handleAnimationComplete}
-          /> */}
+
           {/* <p className="ml-60 font-[font3] text-md">
             {" "}
             – full stack developer....
