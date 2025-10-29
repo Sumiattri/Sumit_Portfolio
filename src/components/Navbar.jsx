@@ -5,9 +5,16 @@ import { LuSunDim } from "react-icons/lu";
 import { BiVolume } from "react-icons/bi";
 import { useTheme } from "../context/ThemeContext";
 import useSound from "use-sound";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Navbar() {
+  const location = useLocation();
+  const [isHome, setIsHome] = useState(true);
+  const [isAbout, setIsAbout] = useState(false);
+  const [isProjects, setIsProjects] = useState(false);
+  const [isContact, setIsContact] = useState(false);
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,6 +24,19 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    setIsHome(location.pathname === "/");
+  }, [location]);
+  useEffect(() => {
+    setIsAbout(location.pathname === "/about");
+  }, [location]);
+  useEffect(() => {
+    setIsProjects(location.pathname === "/projects");
+  }, [location]);
+  useEffect(() => {
+    setIsContact(location.pathname === "/contact");
+  }, [location]);
 
   const { darkMode, toggleTheme, isSoundOn, toggleSound } = useTheme();
   const [playClick1, { stop }] = useSound("/audio/switch-off.mp3", {
@@ -40,14 +60,18 @@ function Navbar() {
 
   return (
     <div
-      className={`sticky ${darkMode ? "dark" : ""} top-0 sm:h-[120px] h-[90px] z-1000 ${
+      className={`sticky ${darkMode ? "dark" : ""}  ${
+        isHome ? "sm:-top-8 top-0" : " top-0"
+      }  sm:h-[120px] h-[90px] z-1000 ${
         scrolled
           ? "backdrop-blur-md dark:bg-[#0D0E11]/10 bg-white/30  shadow-md"
           : "bg-transparent"
       }  `}
     >
       <div
-        className={`w-full  ${darkMode ? "dark" : ""} h-full mt-[0px]  transition-all duration-500 z-2`}
+        className={`w-full  ${darkMode ? "dark" : ""} h-full ${
+          isHome ? "sm:pt-[54px] sm:pb-[20px] pt-0" : "sm:pt-0px"
+        } mt-[0px]  transition-all duration-500 z-2`}
       >
         <div className=" h-full max-w-[1020px] sm:px-[40px] pl-[20px] pr-[40px] mx-auto">
           <header className="w-full h-full flex items-center justify-between">
@@ -58,11 +82,20 @@ function Navbar() {
               >
                 Sumit Attri
               </NavLink>
-              <ul className="sm:flex hidden dark:text-white text-black font-[font3]  gap-10 text-[16px]">
+              <ul className="sm:flex hidden dark:text-[#E4E6E8] text-black font-[font3]  gap-10 text-[16px]">
                 <li className="cursor-pointer ">
                   <NavLink
+                    // onMouseEnter={playClick5}
+                    // onMouseLeave={stop4}
                     className={({ isActive }) =>
-                      `dark:text-white text-black relative ${isActive ? "font-bold" : ""} `
+                      `${
+                        (isAbout && scrolled) ||
+                        isProjects ||
+                        isHome ||
+                        isContact
+                          ? "text-black dark:text-white"
+                          : "text-white"
+                      } relative ${isActive ? "font-bold" : ""} `
                     }
                     to="/about"
                   >
@@ -71,8 +104,17 @@ function Navbar() {
                 </li>
                 <li className="cursor-pointer ">
                   <NavLink
+                    // onMouseEnter={playClick5}
+                    // onMouseLeave={stop4}
                     className={({ isActive }) =>
-                      `dark:text-white text-black relative ${isActive ? "font-bold" : ""} `
+                      `${
+                        (isAbout && scrolled) ||
+                        isProjects ||
+                        isHome ||
+                        isContact
+                          ? "text-black dark:text-white"
+                          : "text-white"
+                      } relative ${isActive ? "font-bold" : ""} `
                     }
                     to="/projects"
                   >
@@ -81,8 +123,17 @@ function Navbar() {
                 </li>
                 <li className="cursor-pointer ">
                   <NavLink
+                    // onMouseEnter={playClick5}
+                    // onMouseLeave={stop4}
                     className={({ isActive }) =>
-                      `dark:text-white text-black relative ${isActive ? "font-bold" : ""} `
+                      `${
+                        (isAbout && scrolled) ||
+                        isProjects ||
+                        isHome ||
+                        isContact
+                          ? "text-black dark:text-white"
+                          : "text-white"
+                      } relative ${isActive ? "font-bold" : ""} `
                     }
                     to="/contact"
                   >
@@ -98,7 +149,11 @@ function Navbar() {
                     toggleSound();
                     playClick4();
                   }}
-                  className="dark:text-white text-black text-[23px] cursor-pointer"
+                  className={`dark:text-[#E4E6E8] text-black text-[23px] cursor-pointer ${
+                    (isAbout && scrolled) || isProjects || isHome || isContact
+                      ? "text-black dark:text-white"
+                      : "text-white"
+                  }`}
                 />
               ) : (
                 <BiVolume
@@ -106,12 +161,20 @@ function Navbar() {
                     toggleSound();
                     playClick3();
                   }}
-                  className="dark:text-white text-black text-[23px] cursor-pointer"
+                  className={`dark:text-[#E4E6E8] text-black text-[23px] cursor-pointer  ${
+                    (isAbout && scrolled) || isProjects || isHome || isContact
+                      ? "text-black dark:text-white"
+                      : "text-white"
+                  }`}
                 />
               )}
               {darkMode ? (
                 <IoMoonOutline
-                  className="dark:text-white text-black text-[21px] cursor-pointer"
+                  className={`text-[#E4E6E8]  text-[21px] cursor-pointer ${
+                    (isAbout && scrolled) || isProjects || isHome || isContact
+                      ? "text-black dark:text-white"
+                      : "text-white"
+                  }`}
                   onClick={() => {
                     toggleTheme();
                     playClick2();
@@ -119,7 +182,11 @@ function Navbar() {
                 />
               ) : (
                 <LuSunDim
-                  className="dark:text-white text-black text-[21px] cursor-pointer"
+                  className={`text-black text-[21px] cursor-pointer ${
+                    (isAbout && scrolled) || isProjects || isHome || isContact
+                      ? "text-black dark:text-white"
+                      : "text-white"
+                  }`}
                   onClick={() => {
                     toggleTheme();
                     playClick1();
