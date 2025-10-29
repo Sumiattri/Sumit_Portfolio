@@ -79,7 +79,7 @@ function Info() {
           <div className="w-full h-auto pt-3 ">
             <a
               className="cursor-pointer"
-              href="https://drive.google.com/file/d/1rUoINZwM6ge1lEI9MLybmNGvf0HDqN_t/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1OXD-F12CN7UesSn14SQNxZB7DPD0KfL1/view?usp=drive_link"
               target="blank"
             >
               <FiFileText className="sm:text-6xl text-3xl cursor-pointer -mt-5  mx-auto text-gray-400 hover:scale-110 transition-all duration-300 " />
