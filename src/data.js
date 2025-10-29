@@ -1,11 +1,11 @@
 export const projects = [
   {
-    title: "Netflix Clone",
+    title: "BingeBox",
     description:
-      "A full-stack Netflix Clone built using React, Firebase, and TMDB API, designed to mimic the core functionality of the original platform. Features include email/password authentication, a dynamic movie browsing experience, and personalized “My List” support. Used Redux Toolkit for state management and integrated responsive design for seamless performance across devices. Also implemented search functionality and a clean UI inspired by Netflix’s modern aesthetic.",
-    src: "/netflix1.png",
-    git: "https://github.com/Sumiattri/netflix-clone",
-    live: "https://netflix-clone-iota-eight-99.vercel.app/",
+      "A full-stack web app built using React, Firebase, and TMDB API, designed to mimic the core functionality of the original platform. Features include email/password authentication, a dynamic movie browsing experience, and personalized “My List” support. Used Redux Toolkit for state management and integrated responsive design for seamless performance across devices. Also implemented search functionality and a clean UI inspired by Netflix’s modern aesthetic.",
+    src: "/netflix.png",
+    git: "https://github.com/Sumiattri/BingeBox",
+    live: "https://bingebox-watch.vercel.app/",
     color: "#88A28D",
   },
   {
@@ -27,12 +27,12 @@ export const projects = [
     color: "#C2491D",
   },
   {
-    title: "NoteBookLM",
+    title: "Cognify",
     description:
-      "NotebookLM is a full-stack web app inspired by Google's NotebookLM. It allows users to upload PDFs, process them using LangChain and HuggingFace embeddings, store and retrieve vector representations using Qdrant, and chat with the document using an AI model powered by the HugingFace API.",
-    src: "/notebooklm.png",
-    git: "https://github.com/Sumiattri/NotebookLM",
-    live: "https://notebook-lm-123.vercel.app/",
+      "Cognify is a full-stack web app that allows users to upload PDFs, process them using LangChain and HuggingFace embeddings, store and retrieve vector representations using Qdrant, and chat with the document using an AI model powered by the HugingFace API.",
+    src: "/cognify.png",
+    git: "https://github.com/Sumiattri/Cognify",
+    live: "https://cognify-smart.vercel.app/",
     color: "#90CDEB",
   },
 ];
