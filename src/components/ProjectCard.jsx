@@ -18,7 +18,7 @@ function ProjectCard({
   live,
 }) {
   const { darkMode, isSoundOn } = useTheme();
-  const [playHover, { stop }] = useSound("public/audio/rising-pops.mp3", {
+  const [playHover, { stop }] = useSound("/audio/rising-pops.mp3", {
     volume: 0.3,
     soundEnabled: isSoundOn,
   });
