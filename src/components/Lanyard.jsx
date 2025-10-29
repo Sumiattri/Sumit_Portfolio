@@ -36,16 +36,18 @@ export default function Lanyard({
     <div className=" absolute  left-78 -top-10  z-0 w-full h-full  flex justify-end items-center transform scale-100 origin-center">
       <Canvas
         camera={{ position: position, fov: fov }}
-        gl={{ alpha: transparent }}
-        onCreated={({ gl }) =>
-          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
-        }
+        gl={{ alpha: transparent, antialias: false, powerPreference: "high-performance" }}
+        dpr={[1, 1.5]}
+        onCreated={({ gl }) => {
+          gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1);
+          gl.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        }}
       >
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={1 / 60}>
+        <Physics gravity={gravity} timeStep={1 / 60} interpolate={false}>
           <Band />
         </Physics>
-        <Environment blur={0.75}>
+        <Environment blur={0.75} resolution={256}>
           <Lightformer
             intensity={2}
             color="white"
@@ -96,6 +98,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
     colliders: false,
     angularDamping: 4,
     linearDamping: 4,
+    sleepThreshold: 0.1,
   };
   const { nodes, materials } = useGLTF(cardGLB);
   const texture = useTexture(lanyard);
@@ -220,7 +223,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
                 map={materials.base.map}
-                map-anisotropy={16}
+                map-anisotropy={8}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
                 roughness={0.9}
