@@ -1,12 +1,16 @@
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 
-function HomeLayout({ children }) {
+function HomeLayout() {
   return (
-    <div className="max-w-[1500px]">
-      <Navbar />
-      <Outlet />
-    </div>
+    <>
+      <ScrollToTop />
+      <div className="max-w-[1500px]">
+        <Navbar />
+        <Outlet />
+      </div>
+    </>
   );
 }
 

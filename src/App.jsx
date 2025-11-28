@@ -11,6 +11,7 @@ import Projects from "./pages/Projects";
 import HomeLayout from "./layout/HomeLayout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
