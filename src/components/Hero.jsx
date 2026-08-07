@@ -109,7 +109,7 @@ function Hero() {
             rotate: ((skyPointer.x - 50) / 50) * 1.2,
           }}
           transition={{ type: "spring", stiffness: 85, damping: 16, mass: 0.7 }}
-          className="absolute md:right-[22%] sm:right-[6%] -right-4 md:top-70 sm:top-50 top-65 z-100"
+          className="absolute md:right-[22%] sm:right-[6%] right-2 md:top-70 sm:top-50 top-65 z-100"
         >
           <img
             src={darkMode ? ImageDark : ImageLight}

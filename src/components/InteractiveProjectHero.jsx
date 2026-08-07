@@ -79,7 +79,7 @@ function InteractiveProjectHero() {
     <section
       ref={heroRef}
       onPointerMove={followPointer}
-      className="relative min-h-[780px] overflow-hidden bg-[#9FD3EE] px-5 pb-36 pt-28 dark:bg-gradient-to-b dark:from-[#111B27] dark:to-[#203746] sm:min-h-[840px] sm:px-10 sm:pt-36"
+      className="relative min-h-[520px] overflow-hidden bg-[#9FD3EE] px-5 pb-24 pt-20 dark:bg-gradient-to-b dark:from-[#111B27] dark:to-[#203746] sm:min-h-[840px] sm:px-10 sm:pb-36 sm:pt-36"
     >
       <Motion.p
         style={{ x: ghostX, y: ghostY }}
@@ -187,7 +187,7 @@ function InteractiveProjectHero() {
         </Motion.a>
       </div>
 
-      <svg viewBox="0 0 1440 155" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-px left-0 h-24 w-full sm:h-36">
+      <svg viewBox="0 0 1440 155" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-[3px] left-0 block h-[98px] w-full sm:-bottom-[3px] sm:h-36">
         <path d="M0 98c138-57 270 32 423 13 151-19 217-81 385-55 143 22 218 76 365 56 113-15 181-53 267-47v90H0Z" className="fill-[#DDEEF8] dark:fill-[#141B22]" />
         <path d="M0 127c177-27 287 23 439 14 154-10 244-46 399-27 157 19 241 46 375 27 89-13 155-28 227-22v36H0Z" className="fill-white dark:fill-[#0D0F12]" />
       </svg>
