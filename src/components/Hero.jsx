@@ -1,27 +1,34 @@
 import ImageDark from "../assets/images/josh-happy-dark.webp";
 import ImageLight from "../assets/images/josh-happy-light.webp";
 import { useTheme } from "../context/ThemeContext";
-// import Stars from "./Stars";
 import { useState } from "react";
+import { motion as Motion } from "motion/react";
+import useSound from "use-sound";
+
+const codeFragments = ["</>", "{ }", "const", "API", "01"];
 
 function Hero() {
-  const { darkMode } = useTheme();
-  const [pos, setPos] = useState({ x: 50, y: 50 });
+  const { darkMode, isSoundOn } = useTheme();
+  const [skyPointer, setSkyPointer] = useState({ x: 50, y: 50 });
+  const [playRoleHover, { stop: stopRoleHover }] = useSound(
+    "/audio/plunger-immediate.mp3",
+    { volume: 0.15, soundEnabled: isSoundOn }
+  );
 
-  const handleAnimationComplete = () => {
-    console.log("All letters have animated!");
-  };
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setPos({ x, y });
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setSkyPointer({
+      x: ((event.clientX - rect.left) / rect.width) * 100,
+      y: ((event.clientY - rect.top) / rect.height) * 100,
+    });
   };
 
   return (
     <div className={` ${darkMode ? "dark" : ""} relative `}>
-      <div className="  h-[547px]  sm:-mt-[164px] -mt-[220px] pt-[124px] bg-[#9FD3EE]  dark:bg-gradient-to-b from-[#111B27] to-[#2f4a5b] relative  overflow-clip   ">
+      <div
+        onMouseMove={handleMouseMove}
+        className="h-[547px] sm:-mt-[164px] -mt-[220px] pt-[124px] bg-[#9FD3EE] dark:bg-gradient-to-b from-[#111B27] to-[#2f4a5b] relative overflow-clip"
+      >
         <div className=" relative flex flex-col items-center justify-end overflow-hidden ">
           <svg
             width="5120"
@@ -40,7 +47,7 @@ function Hero() {
               d="M2617 234C2496.99 229.765 2429.72 276.108 2400.53 303.732C2388.43 315.177 2372.83 323.5 2356.18 323.5H2135.62C2111.05 323.5 2089.95 305.704 2082.79 282.198C2061.56 212.504 2001.53 78.3592 1852.75 71.0003C1691 63 1645 185 1622 186.5C1599 188 1587 88.5 1368.5 88.5C1211 88.5 1180 157.5 1158.4 161.5C1136.8 165.501 1074.33 111 931 129.5C787.671 148 789.676 214.5 770 214C750.324 213.5 736.5 129.5 535.029 142.5C416.863 150.125 382.163 211.07 373.669 260.166C368.141 292.123 343.421 323.5 310.99 323.5H280.024C249.079 323.5 225.052 295.503 224.331 264.567C222.732 195.98 200.305 92 79 92C17.4738 92 3.47982 128.37 0.653094 139.38C0.122368 141.447 0 143.571 0 145.705V398C0 412.36 11.6404 424 25.9998 424H5100C5127.61 424 5150 401.615 5150 374V365V181.851C5150 149.381 5119.54 125.514 5087.89 132.773C5054.67 140.392 5019.02 148.008 5011.31 147.5C4996.11 146.501 4966.41 99.9071 4859.43 95.5003C4731 90.2096 4684 213.5 4663 213.5H4531.84C4513.48 213.5 4496.63 203.435 4485.66 188.715C4451.8 143.286 4365.08 52.9127 4220.67 71.0003C4061 91.0002 4023.5 150.5 4006.5 150.5C3989.5 150.5 3925.6 96.5092 3797.5 100.5C3637 105.5 3599 235.5 3589 231.5C3563.12 221.148 3430.32 192.596 3405.38 180.145C3382.96 168.954 3354.61 161.5 3318.87 161.5C3175.43 161.5 3129.73 224 3116.87 224C3104 224 3073.62 179.5 2953.5 179.5C2782 179.5 2771.92 286 2756 284.5C2740.08 283 2721.1 237.674 2617 234Z"
             ></path>
           </svg>
-          <div className=" absolute scale-[0.88] sm:ml-0 ml-[500px]">
+          <div className="absolute z-20 scale-[0.88] sm:ml-0 ml-[500px]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="5120"
@@ -58,13 +65,58 @@ function Hero() {
           </div>
         </div>
 
-        <div className="absolute md:right-[22%] right-[6%] md:top-70 sm:top-50 top-65 z-100">
+        <div className="pointer-events-none absolute inset-0 z-40 hidden overflow-hidden sm:block" aria-hidden="true">
+          {codeFragments.map((fragment, index) => (
+            <Motion.span
+              key={fragment}
+              initial={{ opacity: 0, y: 55, x: 0, rotate: 0 }}
+              animate={{
+                opacity: [0, 0.42, 0.42, 0],
+                y: [55, 12, -42, -105],
+                x: [0, index % 2 ? 8 : -8, index % 2 ? -5 : 7],
+                rotate: [0, index % 2 ? 7 : -7, 0],
+              }}
+              transition={{
+                duration: 5.5 + index * 0.55,
+                delay: 0.8 + index * 1.05,
+                repeat: Infinity,
+                repeatDelay: 3.2,
+                ease: "easeOut",
+              }}
+              className="absolute rounded-md border border-white/10 bg-white/[0.06] px-2 py-1 font-mono text-[10px] text-white/70 backdrop-blur-sm"
+              style={{ right: `${18 + (index % 3) * 7}%`, top: `${67 + (index % 2) * 4}%` }}
+            >
+              {fragment}
+            </Motion.span>
+          ))}
+        </div>
+
+        <Motion.div
+          animate={{
+            x: ((skyPointer.x - 50) / 50) * 10,
+            scaleX: 1 - ((skyPointer.y - 50) / 50) * 0.08,
+            opacity: 0.18 + ((skyPointer.y - 50) / 50) * 0.05,
+          }}
+          transition={{ type: "spring", stiffness: 75, damping: 18 }}
+          className="absolute md:right-[20.5%] right-[4%] md:top-[430px] top-[390px] z-90 h-3 w-36 rounded-full bg-black blur-md dark:bg-[#809FFF] hidden sm:block"
+          aria-hidden="true"
+        />
+
+        <Motion.div
+          animate={{
+            x: ((skyPointer.x - 50) / 50) * 12,
+            y: ((skyPointer.y - 50) / 50) * 8,
+            rotate: ((skyPointer.x - 50) / 50) * 1.2,
+          }}
+          transition={{ type: "spring", stiffness: 85, damping: 16, mass: 0.7 }}
+          className="absolute md:right-[22%] sm:right-[6%] -right-4 md:top-70 sm:top-50 top-65 z-100"
+        >
           <img
             src={darkMode ? ImageDark : ImageLight}
             alt=""
-            className="sm:w-[140px] w-[100px] h-auto animate-bounce2 "
+            className="sm:w-[140px] w-[82px] h-auto animate-bounce2 "
           />
-        </div>
+        </Motion.div>
       </div>
 
       <div
@@ -81,8 +133,34 @@ function Hero() {
             {" "}
             – full stack developer....
           </p> */}
-          <p className="font-[font3] sm:mt-5 mt-4 sm:max-w-full max-w-[250px]">
-            Every line of code tells a story. Welcome to mine.
+          <p className="font-[font3] sm:mt-5 mt-4 max-w-[570px] sm:text-[17px] text-[15px] leading-7">
+            I’m a{" "}
+            <Motion.span
+              onMouseEnter={() => window.setTimeout(playRoleHover, 20)}
+              onMouseLeave={stopRoleHover}
+              whileHover={{ y: -3, rotate: -1 }}
+              className="relative inline-block cursor-default font-[font2] text-[#4242F9] dark:text-[#809FFF]"
+            >
+              full-stack developer
+              <svg
+                viewBox="0 0 180 9"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                className="absolute -bottom-1 left-0 h-2 w-full overflow-visible"
+              >
+                <Motion.path
+                  d="M2 5.5C38 1.5 64 8 98 4.5C126 1.5 151 6.5 178 3"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 0.8 }}
+                  transition={{ delay: 0.65, duration: 0.8, ease: "easeOut" }}
+                />
+              </svg>
+            </Motion.span>{" "}
+            turning ideas into thoughtful, interactive digital products.
           </p>
         </div>
       </div>

@@ -133,3 +133,19 @@
     padding-right: 200px;
   }
 }
+
+.project-stage {
+  isolation: isolate;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.project-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.18;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(135deg, black, transparent 68%);
+}

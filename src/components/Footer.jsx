@@ -42,7 +42,7 @@ function Footer() {
       ref={footerRef}
       className={` ${
         darkMode ? "dark" : ""
-      } max-w-[1500px]  relative  overflow-hidden w-screen h-[430px] -mt-2 bg-[#90CDEB] dark:bg-gradient-to-b from-[#132331] to-[#255770]`}
+      } max-w-[1500px] relative overflow-hidden w-full h-[500px] sm:h-[430px] -mt-2 bg-[#90CDEB] dark:bg-gradient-to-b from-[#132331] to-[#255770]`}
     >
       <svg
         width="320rem"
@@ -70,7 +70,7 @@ function Footer() {
           className="sm:w-[140px] w-[100px] h-auto rotate-180"
         />
       </div>
-      <div className="text-white absolute  md:left-50 left-15 h-full top-45 flex flex-col gap-5  justify-start">
+      <div className="text-white absolute md:left-50 sm:left-15 left-5 h-full top-45 flex flex-col gap-5 justify-start">
         <div>
           <p className="dark:text-[#809FFF] text-[#4242F9] text-[23px] font-[font2] ">
             Sumit Attri
@@ -105,7 +105,7 @@ function Footer() {
           </p>
         </div>
       </div>
-      <div className="absolute  md:right-40 sm:right-20 right-58 bottom-10 sm:bottom-10">
+      <div className="absolute md:right-40 sm:right-20 right-5 bottom-12 sm:bottom-10">
         <div className="flex  sm:gap-6 gap-4">
           <a href="https://github.com/Sumiattri" target="_blank" className="">
             <FiGithub className="cursor-pointer text-xl dark:text-gray-300 dark:hover:text-white hover:animate-wiggle hover:text-black   text-gray-700" />
