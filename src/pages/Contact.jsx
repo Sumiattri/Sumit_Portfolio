@@ -47,13 +47,13 @@ function Contact() {
             </Motion.p>
           </div>
 
-          <svg viewBox="0 0 1440 155" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-px left-0 h-24 w-full sm:h-36">
+          <svg viewBox="0 0 1440 155" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-[3px] left-0 block h-[98px] w-full sm:h-36">
             <path d="M0 92c154-48 261 40 421 16 145-22 209-79 374-55 159 23 218 81 375 58 105-15 181-47 270-41v85H0Z" className="fill-[#DDEEF8] dark:fill-[#141B22]" />
             <path d="M0 126c163-25 279 21 434 14 161-8 249-44 405-25 148 18 238 45 372 27 92-13 159-29 229-23v36H0Z" className="fill-white dark:fill-[#0D0F12]" />
           </svg>
         </section>
 
-        <section className="mx-auto grid max-w-[1020px] gap-12 px-5 pb-28 pt-14 sm:px-10 sm:pb-36 sm:pt-20 lg:grid-cols-[0.36fr_0.64fr] lg:gap-16">
+        <section className="relative z-10 -mt-1 mx-auto grid max-w-[1020px] gap-12 bg-white px-5 pb-28 pt-14 dark:bg-[#0D0F12] sm:px-10 sm:pb-36 sm:pt-20 lg:grid-cols-[0.36fr_0.64fr] lg:gap-16">
           <Motion.aside
             initial={{ opacity: 0, x: -25 }}
             whileInView={{ opacity: 1, x: 0 }}

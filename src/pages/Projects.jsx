@@ -13,7 +13,7 @@ function Projects() {
       <main className="relative z-0 -mt-[90px] min-h-screen overflow-hidden bg-white text-[#111820] dark:bg-[#0D0F12] dark:text-white sm:-mt-[120px]">
         <InteractiveProjectHero />
 
-        <section id="work" className="mx-auto max-w-[1100px] scroll-mt-24 px-5 pb-28 pt-20 sm:px-10 sm:pb-36 sm:pt-28">
+        <section id="work" className="relative z-10 -mt-1 mx-auto max-w-[1100px] scroll-mt-24 bg-white px-5 pb-28 pt-20 dark:bg-[#0D0F12] sm:px-10 sm:pb-36 sm:pt-28">
           <div className="mb-16">
             <div>
               <p className="font-[font2] text-sm text-[#4242F9] dark:text-[#809FFF]">Selected work · 2024—present</p>
