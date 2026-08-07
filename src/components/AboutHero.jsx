@@ -21,27 +21,24 @@ function AboutHero() {
               – part engineer, part dreamer.....
             </span>
             <section className="sm:pt-3 pt-5">
-              For me, frontend development is where creativity meets logic. I’m
-              drawn to the details—the micro-interactions, the fluid layouts,
-              the way a single animation can elevate an entire experience.
+              For me, software engineering is where ideas become real products.
+              I’m drawn to the full picture—the interfaces people use, the
+              systems behind them, and the details that make it all work.
             </section>
             <section className="pt-5">
               {" "}
-              It’s not just about building interfaces; it’s about crafting
-              moments that feel natural, intuitive, and alive.
+              It’s not just about writing code; it’s about engineering
+              experiences that feel reliable, intuitive, and alive.
             </section>
 
             <section className="pt-3">
-              This space is a glimpse into the grit, growth, and geeky chaos
-              that shapes my journey.
+              This space is a glimpse into the grit, growth, and curious chaos
+              that shapes my journey as a full-stack developer.
             </section>
           </div>
         </div>
         <div className="w-full md:hidden absolute bottom-0 h-[85%] bg-gradient-to-b z-3 from-transparent via-[#181C20] to-[#0D0F12]"></div>
-        <div className="absolute  lg:hidden block z-1   md:top-5 sm:bottom-40 bottom-110  sm:-right-0 -right-30 ">
-          <img className="w-125  " src="/sumit.png" alt="" />
-        </div>
-        <div className="absolute inset-0  lg:flex  hidden  ">
+        <div className="absolute inset-0 flex origin-top-right scale-[0.62] sm:scale-[0.78] lg:scale-100">
           <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
         </div>
       </div>

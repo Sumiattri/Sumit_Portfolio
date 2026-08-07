@@ -19,7 +19,7 @@ import {
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
 // replace with your own imports, see the usage snippet for details
-import cardGLB from "../assets/card.glb";
+import cardGLB from "../assets/card2.glb";
 import lanyard from "../assets/lanyard.png";
 
 import * as THREE from "three";
@@ -33,7 +33,7 @@ export default function Lanyard({
   transparent = true,
 }) {
   return (
-    <div className=" absolute  left-78 -top-10  z-0 w-full h-full  flex justify-end items-center transform scale-100 origin-center">
+    <div className="absolute left-0 top-2 z-0 flex h-full w-full origin-center items-center justify-end transform scale-100 sm:top-0 lg:left-78 lg:-top-10">
       <Canvas
         camera={{ position: position, fov: fov }}
         gl={{ alpha: transparent, antialias: false, powerPreference: "high-performance" }}
@@ -41,36 +41,37 @@ export default function Lanyard({
         onCreated={({ gl }) => {
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1);
           gl.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+          gl.toneMappingExposure = 0.88;
         }}
       >
-        <ambientLight intensity={Math.PI} />
+        <ambientLight intensity={1.5} />
         <Physics gravity={gravity} timeStep={1 / 60} interpolate={false}>
           <Band />
         </Physics>
         <Environment blur={0.75} resolution={256}>
           <Lightformer
-            intensity={2}
+            intensity={1.3}
             color="white"
             position={[0, -1, 5]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={3}
+            intensity={1.8}
             color="white"
             position={[-1, -1, 1]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={3}
+            intensity={1.8}
             color="white"
             position={[1, 1, 1]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={10}
+            intensity={5.5}
             color="white"
             position={[-10, 0, 14]}
             rotation={[0, Math.PI / 2, Math.PI / 3]}

@@ -4,17 +4,15 @@ import DistanceMap from "./DiatanceMap";
 import { BsFillEmojiSunglassesFill } from "react-icons/bs";
 import useSound from "use-sound";
 import FallingText from "./FallingText";
-import { FiFileText } from "react-icons/fi";
-import BlobCursor from "./cursor/BlobCursor";
+import { FiArrowUpRight, FiFileText } from "react-icons/fi";
 
 function Info() {
   const { darkMode } = useTheme();
+  const [experienceExpanded, setExperienceExpanded] = useState(false);
   const buttonRef1 = useRef(null);
   const buttonRef2 = useRef(null);
   const buttonRef3 = useRef(null);
   const buttonRef4 = useRef(null);
-
-  const items = [{ icon: <FiFileText />, color: "#ff4676", label: "Resume" }];
 
   const [play] = useSound("/audio/909-drums.mp3", {
     sprite: {
@@ -79,7 +77,7 @@ function Info() {
           <div className="w-full h-auto pt-3 ">
             <a
               className="cursor-pointer"
-              href="https://drive.google.com/file/d/1OXD-F12CN7UesSn14SQNxZB7DPD0KfL1/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1EtpWF1quhvezIWX2UPEYlkuecMCvcdFb/view?usp=drive_link"
               target="blank"
             >
               <FiFileText className="sm:text-6xl text-3xl cursor-pointer -mt-5  mx-auto text-gray-400 hover:scale-110 transition-all duration-300 " />
@@ -130,25 +128,62 @@ function Info() {
             </p>
           </div>
         </div>
-        <div className="relative md:col-span-1   sm:col-span-3 md:row-span-3 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl p-4">
-          <BlobCursor
-            blobType="circle"
-            fillColor="#5227FF"
-            trailCount={3}
-            sizes={[60, 125, 75]}
-            innerSizes={[20, 35, 25]}
-            innerColor="rgba(255,255,255,0.8)"
-            opacities={[0.6, 0.6, 0.6]}
-            shadowColor="rgba(0,0,0,0.75)"
-            shadowBlur={5}
-            shadowOffsetX={10}
-            shadowOffsetY={10}
-            filterStdDeviation={30}
-            useFilter={true}
-            fastDuration={0.1}
-            slowDuration={0.5}
-            zIndex={100}
-          />
+        <div className="relative col-span-2 min-h-[220px] md:col-span-1 sm:col-span-3 md:row-span-3 row-span-2 dark:bg-[#1B2532] bg-[#DDEEF8] dark:text-white text-black rounded-2xl overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 z-10 flex min-h-0 flex-col overflow-hidden p-5">
+            <div>
+              <div className="flex items-center justify-between gap-2 font-[font2] text-[10px] uppercase tracking-[0.14em] opacity-55">
+                <span className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF4676] shadow-[0_0_10px_#FF4676]" />
+                  Experience
+                </span>
+                <span>Jan—Jul 2026</span>
+              </div>
+              <h3 className="mt-5 font-[font4] text-xl leading-tight">
+                Software Engineer Intern
+              </h3>
+              <a
+                href="https://magica.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="pointer-events-auto mt-2 inline-flex items-center gap-2 font-[font2] text-lg text-[#FF4676] transition-transform hover:-translate-y-0.5"
+              >
+                Magica AI <FiArrowUpRight className="text-sm" />
+              </a>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setExperienceExpanded(true)}
+              className="pointer-events-auto mt-auto w-fit border-b border-current pb-0.5 font-[font2] text-[10px] text-[#FF4676] transition-transform hover:translate-x-1"
+            >
+              What I built →
+            </button>
+          </div>
+          {experienceExpanded && (
+            <div className="absolute inset-0 z-20 flex flex-col bg-[#DDEEF8] p-4 text-black dark:bg-[#1B2532] dark:text-white">
+              <div className="flex items-center justify-between">
+                <p className="font-[font2] text-[10px] uppercase tracking-[0.14em] text-[#FF4676]">
+                  At Magica AI
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setExperienceExpanded(false)}
+                  className="rounded-full border border-black/15 px-2 py-0.5 font-[font2] text-xs dark:border-white/15"
+                  aria-label="Close experience details"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="mt-4 font-[font3] text-[10px] leading-[1.6] opacity-80">
+                Built core experiences for a production AI workflow platform:
+                its visual editor, reusable React systems, type-safe APIs, and
+                reliable asynchronous execution.
+              </p>
+              <p className="mt-auto font-[font2] text-[8px] uppercase tracking-[0.08em] opacity-45">
+                Next.js · TypeScript · React Flow
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Middle section  */}
